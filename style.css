@@ -7,7 +7,7 @@
     --color-primary: #D4AF37;
     --color-primary-hover: #B5952F;
     --color-text: #F5F5F5;
-    --color-text-muted: #A0A0A0;
+    --color-text-muted: #B0A796;
     
     --font-heading: 'DM Serif Display', serif;
     --font-body: 'Inter', sans-serif;
@@ -42,6 +42,8 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 400;
     line-height: 1.2;
     margin-bottom: 1rem;
+    text-wrap: balance;
+    letter-spacing: -0.02em;
 }
 
 h1 {
@@ -146,6 +148,10 @@ strong {
 .btn-secondary:hover {
     background-color: #2a2b30;
     border-color: var(--color-primary);
+}
+
+.btn:active {
+    transform: scale(0.98);
 }
 
 .btn-outline {
@@ -385,52 +391,68 @@ strong {
    ========================================================================== */
 .servicos-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 1.5rem;
 }
 
 .servico-card {
-    background-color: var(--color-bg-sec);
-    padding: 2.5rem 1.5rem;
-    border-radius: 8px;
-    text-align: center;
-    border: 1px solid rgba(255, 255, 255, 0.03);
+    background-color: transparent;
+    padding: 1.5rem 0;
+    border-radius: 0;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    text-align: left;
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
     transition: var(--transition);
 }
 
 .servico-card:hover {
-    transform: translateY(-5px);
+    transform: translateX(10px);
     border-color: rgba(212, 175, 55, 0.3);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    box-shadow: none;
 }
 
 .servico-card i {
-    font-size: 2.5rem;
+    font-size: 2rem;
     color: var(--color-primary);
-    margin-bottom: 1.5rem;
+    margin-bottom: 0;
+    margin-top: 0.2rem;
+}
+
+.servico-card-content {
+    flex: 1;
 }
 
 .servico-card h3 {
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+}
+
+.servico-card p {
+    margin-bottom: 0;
 }
 
 .servico-card.destaque {
-    background: linear-gradient(145deg, var(--color-bg-sec), #25262a);
-    border: 1px solid rgba(212, 175, 55, 0.2);
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
     position: relative;
 }
 
 .servico-card.destaque::before {
     content: 'Recomendado';
     position: absolute;
-    top: -12px;
-    left: 50%;
-    transform: translateX(-50%);
+    top: 1.5rem;
+    left: auto;
+    right: 0;
+    transform: none;
     background-color: var(--color-primary);
     color: var(--color-bg-main);
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 700;
-    padding: 0.2rem 0.8rem;
+    padding: 0.2rem 0.6rem;
     border-radius: 20px;
     text-transform: uppercase;
 }
@@ -545,14 +567,28 @@ strong {
 .avaliacoes-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    gap: 4rem;
+    margin-top: 2rem;
 }
 
 .avaliacao-card {
-    background-color: var(--color-bg-main);
-    padding: 2.5rem 2rem;
-    border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background-color: transparent;
+    padding: 0;
+    border-radius: 0;
+    border: none;
+    position: relative;
+}
+
+.avaliacao-card::before {
+    content: '"';
+    position: absolute;
+    top: -3rem;
+    left: -1.5rem;
+    font-family: var(--font-heading);
+    font-size: 8rem;
+    color: rgba(212, 175, 55, 0.1);
+    z-index: 0;
+    line-height: 1;
 }
 
 .stars {
@@ -560,15 +596,17 @@ strong {
     margin-bottom: 1.5rem;
     display: flex;
     gap: 0.2rem;
+    position: relative;
+    z-index: 1;
 }
 
 .avaliacao-card p {
-    font-style: italic;
-    margin-bottom: 1.5rem;
-}
-
-.avaliacao-card strong {
-    color: var(--color-primary);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--color-text);
+    position: relative;
+    z-index: 1;
+    margin-bottom: 0;
 }
 
 /* ==========================================================================
@@ -810,5 +848,43 @@ strong {
 
     .localizacao-box, .contato-final-box {
         padding: 2rem 1.5rem;
+    }
+}
+
+/* ==========================================================================
+   Animations
+   ========================================================================== */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-up {
+    animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
+}
+
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    .animate-fade-up {
+        opacity: 1;
+        transform: none;
+        animation: none;
     }
 }
