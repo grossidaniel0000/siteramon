@@ -327,83 +327,30 @@ strong {
 /* ==========================================================================
    Antes e Depois
    ========================================================================== */
-.antes-depois-grid {
+.antes-depois-simple-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+    gap: 1rem;
 }
 
-.ad-card {
+.ad-card-simple {
     position: relative;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    aspect-ratio: 4/5;
 }
 
-.ad-image-container {
-    position: relative;
+.ad-card-simple img {
     width: 100%;
-    height: 520px;
-}
-
-.img-antes, .img-depois {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    object-fit: cover;
-    pointer-events: none;
-    user-select: none;
-}
-
-.img-antes {
-    z-index: 1;
-    clip-path: inset(0 50% 0 0); /* 50% default */
-}
-
-.img-depois {
-    z-index: 0;
-}
-
-.image-comparison {
-    cursor: ew-resize;
-    touch-action: pan-y;
-}
-
-/* Slider Handle */
-.slider-handle {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    width: 4px;
     height: 100%;
-    background-color: var(--color-primary);
-    z-index: 2;
-    transform: translateX(-50%);
-    pointer-events: none;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    object-fit: cover;
 }
 
-.slider-arrows {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 40px;
-    height: 40px;
-    background-color: var(--color-primary);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--color-bg);
-    font-size: 1.2rem;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-    gap: 4px;
-}
-
-.ad-label {
+.ad-label-simple {
     position: absolute;
     bottom: 1rem;
+    left: 1rem;
     padding: 0.5rem 1rem;
     background-color: rgba(11, 11, 11, 0.8);
     color: var(--color-primary);
@@ -413,8 +360,56 @@ strong {
     z-index: 2;
 }
 
-.label-antes { left: 1rem; opacity: 1; z-index: 3; }
-.label-depois { right: 1rem; opacity: 1; z-index: 3; }
+/* ==========================================================================
+   Barba Highlight
+   ========================================================================== */
+.barba-highlight {
+    background-color: var(--color-bg-sec);
+}
+
+.barba-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.barba-content h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.5rem;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+}
+
+.barba-content p {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.diferenciais-list {
+    list-style: none;
+}
+
+.diferenciais-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.8rem;
+    font-size: 1.05rem;
+}
+
+.diferenciais-list i {
+    color: var(--color-primary);
+    font-size: 1.2rem;
+}
+
+.barba-image img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    aspect-ratio: 4/5;
+    object-fit: cover;
+}
 
 /* ==========================================================================
    Barbeiros

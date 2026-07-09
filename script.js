@@ -88,50 +88,5 @@ document.addEventListener('DOMContentLoaded', () => {
         revealOnScroll.observe(el);
     });
 
-    // Image Comparison Slider
-    const sliders = document.querySelectorAll('.image-comparison');
-    
-    sliders.forEach(slider => {
-        const handle = slider.querySelector('.slider-handle');
-        const imgAntes = slider.querySelector('.img-antes');
-        let isDragging = false;
-        
-        const moveSlider = (e) => {
-            if (!isDragging) return;
-            
-            let rect = slider.getBoundingClientRect();
-            let x;
-            
-            if (e.type.includes('touch')) {
-                x = e.touches[0].clientX - rect.left;
-            } else {
-                x = e.clientX - rect.left;
-            }
-            
-            // Constrain x
-            x = Math.max(0, Math.min(x, rect.width));
-            
-            // Calculate percentage
-            let percentage = (x / rect.width) * 100;
-            
-            // Update handle and clip-path
-            handle.style.left = percentage + '%';
-            imgAntes.style.clipPath = `inset(0 ${100 - percentage}% 0 0)`;
-        };
-        
-        slider.addEventListener('mousedown', (e) => {
-            isDragging = true;
-            moveSlider(e);
-        });
-        slider.addEventListener('touchstart', (e) => {
-            isDragging = true;
-            moveSlider(e);
-        });
-        
-        window.addEventListener('mouseup', () => isDragging = false);
-        window.addEventListener('touchend', () => isDragging = false);
-        
-        window.addEventListener('mousemove', moveSlider);
-        window.addEventListener('touchmove', moveSlider);
-    });
+
 });
