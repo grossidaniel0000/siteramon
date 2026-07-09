@@ -351,28 +351,54 @@ strong {
     top: 0; left: 0;
     width: 100%; height: 100%;
     object-fit: cover;
-    transition: opacity 0.5s ease;
+    pointer-events: none;
+    user-select: none;
 }
 
-/* Primeira foto: Zoom para remover bordas e posicionar no topo/centro */
-.ad-card:nth-child(1) .img-antes,
-.ad-card:nth-child(1) .img-depois {
-    object-position: top center;
-    transform: scale(1.15);
-}
-
-/* Segunda foto: Enquadramento focado no centro (rosto) */
-.ad-card:nth-child(2) .img-antes,
-.ad-card:nth-child(2) .img-depois {
-    object-position: center center;
+.img-antes {
+    z-index: 1;
+    clip-path: inset(0 50% 0 0); /* 50% default */
 }
 
 .img-depois {
-    opacity: 0;
+    z-index: 0;
 }
 
-.ad-card:hover .img-depois {
-    opacity: 1;
+.image-comparison {
+    cursor: ew-resize;
+    touch-action: pan-y;
+}
+
+/* Slider Handle */
+.slider-handle {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 4px;
+    height: 100%;
+    background-color: var(--color-primary);
+    z-index: 2;
+    transform: translateX(-50%);
+    pointer-events: none;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.slider-arrows {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    background-color: var(--color-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-bg);
+    font-size: 1.2rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    gap: 4px;
 }
 
 .ad-label {
@@ -385,13 +411,10 @@ strong {
     font-weight: 600;
     border-radius: 4px;
     z-index: 2;
-    transition: opacity 0.5s ease;
 }
 
-.label-antes { left: 1rem; opacity: 1; }
-.label-depois { right: 1rem; opacity: 0; }
-.ad-card:hover .label-antes { opacity: 0; }
-.ad-card:hover .label-depois { opacity: 1; }
+.label-antes { left: 1rem; opacity: 1; z-index: 3; }
+.label-depois { right: 1rem; opacity: 1; z-index: 3; }
 
 /* ==========================================================================
    Barbeiros
