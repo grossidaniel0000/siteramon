@@ -351,8 +351,20 @@ strong {
     top: 0; left: 0;
     width: 100%; height: 100%;
     object-fit: cover;
-    object-position: center 15%;
     transition: opacity 0.5s ease;
+}
+
+/* Primeira foto: Zoom para remover bordas e posicionar no topo/centro */
+.ad-card:nth-child(1) .img-antes,
+.ad-card:nth-child(1) .img-depois {
+    object-position: top center;
+    transform: scale(1.15);
+}
+
+/* Segunda foto: Enquadramento focado no centro (rosto) */
+.ad-card:nth-child(2) .img-antes,
+.ad-card:nth-child(2) .img-depois {
+    object-position: center center;
 }
 
 .img-depois {
