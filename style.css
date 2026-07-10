@@ -369,56 +369,6 @@ strong {
     z-index: 2;
 }
 
-/* ==========================================================================
-   Barba Highlight
-   ========================================================================== */
-.barba-highlight {
-    background-color: var(--color-bg-sec);
-}
-
-.barba-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: center;
-}
-
-.barba-content h2 {
-    font-family: 'DM Serif Display', serif;
-    font-size: 2.5rem;
-    color: var(--color-primary);
-    margin-bottom: 1rem;
-}
-
-.barba-content p {
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
-}
-
-.diferenciais-list {
-    list-style: none;
-}
-
-.diferenciais-list li {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-bottom: 0.8rem;
-    font-size: 1.05rem;
-}
-
-.diferenciais-list i {
-    color: var(--color-primary);
-    font-size: 1.2rem;
-}
-
-.barba-image img {
-    width: 100%;
-    border-radius: 8px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    aspect-ratio: 4/5;
-    object-fit: cover;
-}
 
 /* ==========================================================================
    Barbeiros
